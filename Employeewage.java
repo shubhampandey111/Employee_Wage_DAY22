@@ -6,10 +6,11 @@ public class Employeewage {
     static int ratePerHour;
     static int days;
     static int maxHours;
+    static int totalWage;
     Employeewage(String company,int ratePerHour,int days,int maxHours)
     {
         this.company=company;
-        this.ratePerHour=ratePerHour;
+	this.ratePerHour=ratePerHour;
         this.days=days;
         this.maxHours=maxHours;
     }
@@ -39,11 +40,11 @@ public class Employeewage {
     {
         System.out.println(totalDays+"\t"+workHours+"\t\t"+totalHours+"\t\t"+dailySalary+"\t\t"+totalSalary);
     }
-    public static int employeeWages()
+    public static void employeeWages()
     {
         int check=0,workHours=0,dailySalary=0,totalSalary=0,totalHours=0,totalDays=0;
         System.out.println("Day\tDaily Hours\tTotal Hours\tDaily Wage\tTotal Wage");
-        while(totalHours<maxHours && totalDays<days)
+	while(totalHours<maxHours && totalDays<days)
         {
             totalDays+=1;
             check=attendanceCheck();
@@ -53,7 +54,7 @@ public class Employeewage {
             totalSalary=totalHours*ratePerHour;
             print(totalDays,workHours,totalHours,dailySalary,totalSalary);
         }
-        return totalSalary;
+        totalWage= totalSalary;
     }
 	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
@@ -70,7 +71,8 @@ public class Employeewage {
 			System.out.println("Enter maximum working hours:");
 			int maxHours=sc.nextInt();
 			Employeewage companyname=new Employeewage(company,ratePerHour,days,maxHours);
-			System.out.println("Employee wage in company "+companyname.company+" is "+companyname.employeeWages());
+			companyname.employeeWages();
+			System.out.println("Employee wage in company "+companyname.company+" is "+companyname.totalWage);
 		}
 	}
 }
