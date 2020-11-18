@@ -1,6 +1,5 @@
-package companyEmployeeWage;
 import java.util.*;
-public class Employeewage
+public class Employeewage implements iEmployeeWage
 {
 	int counter=0;
 	int numberOfCompanies;
@@ -59,8 +58,6 @@ public class Employeewage
             check=attendanceCheck();
             workHours=getWorkingHours(check);
             totalHours=totalHours+workHours;
-            dailySalary=workHours*ratePerHour;
-            totalSalary=totalHours*ratePerHour;
             dailySalary=workHours*companyEmployee.ratePerHour;
             totalSalary=totalHours*companyEmployee.ratePerHour;
             print(totalDays,workHours,totalHours,dailySalary,totalSalary);
@@ -71,7 +68,7 @@ public class Employeewage
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Enter no.of companies:");
 		int n=sc.nextInt();
-		Employeewage employeeWageArray=new Employeewage(n);
+		employeeWage employeeWageArray=new employeeWage(n);
 		for(int counter=1;counter<=n;counter++)
 		{
 			System.out.println("Enter name of company:");
